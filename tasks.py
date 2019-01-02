@@ -7,7 +7,7 @@ _plugin_file_rootname = 'safety_save'
 
 
 @task
-def install():
+def install(ctx):
     path = expanduser('~/.local/share/gedit/plugins')
     if exists(path) is False:
         print("Create gEdit plugins path: %s" % (path))
@@ -17,4 +17,4 @@ def install():
                              ('py', 'plugin code')):
         filename = ('%s.%s' % (_plugin_file_rootname, ext))
         print("Copying %s (%s)." % (filename, description))
-        run('cp %s %s' % (filename, path))
+        ctx.run('cp %s %s' % (filename, path))
